@@ -1,0 +1,6 @@
+@SysGym.API_HostAddress = http://localhost:5050
+
+GET {{SysGym.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

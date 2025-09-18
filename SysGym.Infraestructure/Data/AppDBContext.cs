@@ -14,8 +14,10 @@ namespace SysGym.Infraestructure.Data
             : base(options)
         {
         }
-        public DbSet<Rol> rols { get; set; }
-        public DbSet<Usuario> usuarios { get; set; }
+        public DbSet<Rol> Rols { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+
+        public DbSet<Acceso> Accesos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

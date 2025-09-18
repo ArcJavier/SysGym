@@ -21,32 +21,32 @@ namespace SysGym.Infraestructure.Repositories
         }
         public async Task<Rol> AddRolAsync(Rol rol)
         {
-            _context.rols.Add(rol);
+            _context.Rols.Add(rol);
             await _context.SaveChangesAsync();
             return rol;
         }
         public async Task<bool> DeleteRolAsync(int id)
         {
-            var rol = await _context.rols.FindAsync(id);
+            var rol = await _context.Rols.FindAsync(id);
             if (rol == null)
             {
                 return false;
             }
-            _context.rols.Remove(rol);
+            _context.Rols.Remove(rol);
             await _context.SaveChangesAsync();
             return true;
         }
         public async Task<Rol> GetRolByIdAsync(int id)
         {
-            return await _context.rols.FindAsync(id);
+            return await _context.Rols.FindAsync(id);
         }
         public async Task<IEnumerable<Rol>> GetRolsAsync()
         {
-            return await _context.rols.ToListAsync();
+            return await _context.Rols.ToListAsync();
         }
         public async Task<Rol> UpdateRolAsync(Rol rol)
         {
-            var existingRol = await _context.rols.FindAsync(rol.IdRol);
+            var existingRol = await _context.Rols.FindAsync(rol.IdRol);
             if (existingRol == null)
             {
                 return null;

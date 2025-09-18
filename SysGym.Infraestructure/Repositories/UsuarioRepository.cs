@@ -21,32 +21,32 @@ namespace SysGym.Infraestructure.Repositories
         }
         public async Task<Usuario> AddUsuarioAsync(Usuario usuario)
         {
-            _context.usuarios.Add(usuario);
+            _context.Usuarios.Add(usuario);
             await _context.SaveChangesAsync();
             return usuario;
         }
         public async Task<bool> DeleteUsuarioAsync(int id)
         {
-            var usuario = await _context.usuarios.FindAsync(id);
+            var usuario = await _context.Usuarios.FindAsync(id);
             if (usuario == null)
             {
                 return false;
             }
-            _context.usuarios.Remove(usuario);
+            _context.Usuarios.Remove(usuario);
             await _context.SaveChangesAsync();
             return true;
         }
         public async Task<Usuario> GetUsuarioByIdAsync(int id)
         {
-            return await _context.usuarios.FindAsync(id);
+            return await _context.Usuarios.FindAsync(id);
         }
         public async Task<IEnumerable<Usuario>> GetUsuariosAsync()
         {
-            return await _context.usuarios.ToListAsync();
+            return await _context.Usuarios.ToListAsync();
         }
         public async Task<Usuario> UpdateUsuarioAsync(Usuario usuario)
         {
-            var existingUsuario = await _context.usuarios.FindAsync(usuario.IdUsuario);
+            var existingUsuario = await _context.Usuarios.FindAsync(usuario.IdUsuario);
             if (existingUsuario == null)
             {
                 return null;

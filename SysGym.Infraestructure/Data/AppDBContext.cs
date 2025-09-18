@@ -20,9 +20,15 @@ namespace SysGym.Infraestructure.Data
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Sucursal> Sucursales { get; set; }
 
+        public DbSet<Pago> Pagos { get; set; }
+        public DbSet<Congelacion> Congelaciones { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Rol>().ToTable("t_rols");
+            modelBuilder.Entity<Rol>().ToTable("t_usuarios");
+            modelBuilder.Entity<Pago>().ToTable("t_pagos");
+            modelBuilder.Entity<Congelacion>().ToTable("t_congelaciones");
             modelBuilder.Entity<Usuario>().ToTable("t_usuarios");
             modelBuilder.Entity<Cliente>().ToTable("t_clientes");
             modelBuilder.Entity<Sucursal>().ToTable("t_sucursales");

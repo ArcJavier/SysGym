@@ -16,13 +16,16 @@ namespace SysGym.Infraestructure.Data
         }
         public DbSet<Rol> Rols { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
-
         public DbSet<Acceso> Accesos { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Sucursal> Sucursales { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Rol>().ToTable("t_rols");
-            modelBuilder.Entity<Rol>().ToTable("t_usuarios");
+            modelBuilder.Entity<Usuario>().ToTable("t_usuarios");
+            modelBuilder.Entity<Cliente>().ToTable("t_clientes");
+            modelBuilder.Entity<Sucursal>().ToTable("t_sucursales");
             base.OnModelCreating(modelBuilder);
         }
     }

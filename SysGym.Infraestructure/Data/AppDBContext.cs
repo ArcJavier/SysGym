@@ -10,6 +10,7 @@ namespace SysGym.Infraestructure.Data
 {
     public class AppDBContext : DbContext
     {
+
         public AppDBContext(DbContextOptions<AppDBContext> options)
             : base(options)
         {
@@ -19,6 +20,7 @@ namespace SysGym.Infraestructure.Data
         public DbSet<Acceso> Accesos { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Sucursal> Sucursales { get; set; }
+        public DbSet<PlanMembresia> PlanMembresias { get; set; }
 
         public DbSet<Pago> Pagos { get; set; }
         public DbSet<Congelacion> Congelaciones { get; set; }

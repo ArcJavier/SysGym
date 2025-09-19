@@ -7,7 +7,7 @@ using SysGym.Domain.Entities;
 
 namespace SysGym.Domain.Repositories
 {
-    public interface IPlanMembresia
+    public interface IPlanMembresiaRepository
     {
         /// <summary>
         /// Obtiene todos los Planes de Membresías registrados.
@@ -34,7 +34,7 @@ namespace SysGym.Domain.Repositories
         /// </summary>
         /// <param name="planMembresia">El objeto <see cref="PlanMembresia"/> con los cambios a aplicar.</param>
         /// <returns>El objeto <see cref="PlanMembresia"/> actualizado.</returns>
-        Task<PlanMembresia> UpdatePlanembresiaAsync(PlanMembresia planMembresia);
+        Task<PlanMembresia> UpdatePlanMembresiaAsync(PlanMembresia planMembresia);
 
         /// <summary>
         /// Elimina un Plan de Membresía existente por su identificador único.
@@ -42,6 +42,7 @@ namespace SysGym.Domain.Repositories
         /// <param name="id">Identificador único del plan a eliminar.</param>
         /// <returns><c>true</c> si el plan fue eliminado correctamente; en caso contrario, <c>false</c>.</returns>
         Task<bool> DeletePlanMembresiaAsync(int id);
+        
     }
 
 }

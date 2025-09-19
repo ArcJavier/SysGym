@@ -9,12 +9,20 @@ using Microsoft.EntityFrameworkCore;
 using SysGym.Infraestructure.Data;
 namespace SysGym.Infraestructure.Repositories
 {
-    public class PlanMembresiaRepository : IPlanMembresia
+    public class PlanMembresiaRepository : IPlanMembresiaRepository
     {
       private readonly AppDBContext _context;
         public PlanMembresiaRepository(AppDBContext context)
         {
             _context = context;
+        }
+        public async Task<IEnumerable<PlanMembresia>> GetPlanMembresiasAsync()
+        {
+            return await _context.PlanMembresias.ToListAsync();
+        }
+        public async Task<PlanMembresia> GetPlanMembresiaById(int id)
+        {
+            return await _context.PlanMembresias.FindAsync(id);
         }
         public async Task<PlanMembresia> AddPlanMembresiaAsync(PlanMembresia planMembresia)
         {
@@ -23,24 +31,7 @@ namespace SysGym.Infraestructure.Repositories
             await _context.SaveChangesAsync();
             return planMembresia;
         }
-        public async Task<bool> DeletePlanMembresiaAsync(int id)
-        {
-            var existing = await _context.PlanMembresias.FindAsync(id);
-            if (existing == null)
-                return false;
-            _context.PlanMembresias.Remove(existing);
-            await _context.SaveChangesAsync();
-            return true;
-        }
-        public async Task<PlanMembresia> GetPlanMembresiaById(int id)
-        {
-            return await _context.PlanMembresias.FindAsync(id);
-        }
-        public async Task<IEnumerable<PlanMembresia>> GetPlanMembresiasAsync()
-        {
-            return await _context.PlanMembresias.ToListAsync();
-        }
-        public async Task<PlanMembresia> UpdatePlanembresiaAsync(PlanMembresia planMembresia)
+        public async Task<PlanMembresia> UpdatePlanMembresiaAsync(PlanMembresia planMembresia)
         {
             var existing = await _context.PlanMembresias.FindAsync(planMembresia.IdPlan);
             if (existing == null)
@@ -53,6 +44,15 @@ namespace SysGym.Infraestructure.Repositories
             _context.PlanMembresias.Update(existing);
             await _context.SaveChangesAsync();
             return existing;
+        }
+        public async Task<bool> DeletePlanMembresiaAsync(int id)
+        {
+            var existing = await _context.PlanMembresias.FindAsync(id);
+            if (existing == null)
+                return false;
+            _context.PlanMembresias.Remove(existing);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }
